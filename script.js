@@ -8,8 +8,20 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         behavior: 'smooth',
         block: 'start'
       });
+      // Close mobile menu if open
+      document.getElementById('navMenu').classList.remove('active');
+      document.getElementById('menuToggle').classList.remove('active');
     }
   });
+});
+
+// Mobile menu toggle
+const menuToggle = document.getElementById('menuToggle');
+const navMenu = document.getElementById('navMenu');
+
+menuToggle.addEventListener('click', () => {
+  menuToggle.classList.toggle('active');
+  navMenu.classList.toggle('active');
 });
 
 // Intersection Observer for fade-in animations
@@ -26,7 +38,6 @@ const observer = new IntersectionObserver((entries) => {
   });
 }, observerOptions);
 
-// Observe all fade-in elements
 document.querySelectorAll('.fade-in').forEach(element => {
   observer.observe(element);
 });
@@ -52,29 +63,126 @@ window.addEventListener('scroll', () => {
   });
 });
 
-// Pricing card hover effect enhancement
+// Pricing card hover effects (works on both desktop and mobile touch)
 document.querySelectorAll('.pricing-card').forEach(card => {
+  // Desktop hover
   card.addEventListener('mouseenter', function() {
-    this.style.transform = 'translateY(-10px) scale(1.02)';
+    this.classList.add('hover-active');
   });
   
   card.addEventListener('mouseleave', function() {
-    this.style.transform = 'translateY(0) scale(1)';
+    this.classList.remove('hover-active');
+  });
+
+  // Mobile touch
+  card.addEventListener('touchstart', function() {
+    this.classList.add('hover-active');
+  });
+  
+  card.addEventListener('touchend', function() {
+    setTimeout(() => {
+      this.classList.remove('hover-active');
+    }, 300);
   });
 });
 
-// Service card animations
+// Service card animations (works on both desktop and mobile)
 document.querySelectorAll('.service-card').forEach(card => {
+  // Desktop hover
   card.addEventListener('mouseenter', function() {
-    this.style.transform = 'translateY(-10px) rotateZ(0.5deg)';
+    this.classList.add('hover-active');
   });
   
   card.addEventListener('mouseleave', function() {
-    this.style.transform = 'translateY(0) rotateZ(0deg)';
+    this.classList.remove('hover-active');
+  });
+
+  // Mobile touch
+  card.addEventListener('touchstart', function() {
+    this.classList.add('hover-active');
+  });
+  
+  card.addEventListener('touchend', function() {
+    setTimeout(() => {
+      this.classList.remove('hover-active');
+    }, 300);
   });
 });
 
-// Add parallax effect to hero section (smooth and subtle)
+// Ripple effect on hero CTA button
+const heroCta = document.getElementById('heroCta');
+heroCta.addEventListener('click', function(e) {
+  const ripple = document.createElement('span');
+  ripple.classList.add('ripple');
+  
+  const rect = this.getBoundingClientRect();
+  const size = Math.max(rect.width, rect.height);
+  const x = e.clientX - rect.left - size / 2;
+  const y = e.clientY - rect.top - size / 2;
+  
+  ripple.style.width = ripple.style.height = size + 'px';
+  ripple.style.left = x + 'px';
+  ripple.style.top = y + 'px';
+  
+  this.appendChild(ripple);
+  
+  setTimeout(() => {
+    ripple.remove();
+  }, 600);
+});
+
+// Modal functionality
+const modalCore = document.getElementById('modalCore');
+const modalPro = document.getElementById('modalPro');
+
+// Open modals when pricing buttons are clicked
+document.querySelectorAll('.pricing-btn').forEach(btn => {
+  btn.addEventListener('click', function() {
+    const card = this.closest('.pricing-card');
+    const plan = card.getAttribute('data-plan');
+    
+    if (plan === 'core') {
+      modalCore.classList.add('active');
+    } else if (plan === 'pro') {
+      modalPro.classList.add('active');
+    }
+  });
+});
+
+// Close modals
+document.querySelectorAll('.modal-close').forEach(closeBtn => {
+  closeBtn.addEventListener('click', function() {
+    this.closest('.modal').classList.remove('active');
+  });
+});
+
+// Close modal when clicking outside
+document.querySelectorAll('.modal').forEach(modal => {
+  modal.addEventListener('click', function(e) {
+    if (e.target === this) {
+      this.classList.remove('active');
+    }
+  });
+});
+
+// Modal CTA buttons scroll to contact
+document.querySelectorAll('.modal-cta').forEach(btn => {
+  btn.addEventListener('click', function() {
+    // Close modal
+    this.closest('.modal').classList.remove('active');
+    
+    // Scroll to contact section
+    const contactSection = document.getElementById('contact');
+    if (contactSection) {
+      contactSection.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  });
+});
+
+// Add parallax effect to hero section
 let ticking = false;
 window.addEventListener('scroll', () => {
   if (!ticking) {
@@ -102,3 +210,29 @@ window.addEventListener('scroll', () => {
     nav.style.boxShadow = 'none';
   }
 });
+
+// Hero title gradient follows mouse
+const heroTitle = document.querySelector('.hero h1');
+if (heroTitle) {
+  heroTitle.addEventListener('mousemove', function(e) {
+    const rect = this.getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / rect.width) * 100;
+    const y = ((e.clientY - rect.top) / rect.height) * 100;
+    
+    this.style.background = `
+      radial-gradient(circle at ${x}% ${y}%, 
+        white, 
+        var(--electric-blue) 30%, 
+        var(--bright-blue) 60%
+      )
+    `;
+    this.style.webkitBackgroundClip = 'text';
+    this.style.backgroundClip = 'text';
+  });
+  
+  heroTitle.addEventListener('mouseleave', function() {
+    this.style.background = 'linear-gradient(135deg, white, var(--electric-blue), var(--bright-blue))';
+    this.style.webkitBackgroundClip = 'text';
+    this.style.backgroundClip = 'text';
+  });
+}
