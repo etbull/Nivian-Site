@@ -29,23 +29,6 @@ body {
   color: white;
   overflow-x: hidden;
   line-height: 1.6;
-  /* Removed animation */
-}
-
-
-@keyframes moveSplotches {
-  0%, 100% {
-    background-position: 0% 0%, 100% 100%, 50% 50%, 0% 100%, 100% 0%;
-  }
-  25% {
-    background-position: 10% 5%, 90% 95%, 55% 45%, 5% 95%, 95% 5%;
-  }
-  50% {
-    background-position: 5% 10%, 95% 90%, 45% 55%, 10% 90%, 90% 10%;
-  }
-  75% {
-    background-position: 15% 5%, 85% 95%, 50% 50%, 5% 85%, 95% 15%;
-  }
 }
 
 /* Navigation */
@@ -62,6 +45,27 @@ nav {
   backdrop-filter: var(--glass-blur);
   -webkit-backdrop-filter: var(--glass-blur);
   border-bottom: 1px solid rgba(168, 197, 230, 0.1);
+  animation: navShine 5s ease-in-out infinite;
+}
+
+@keyframes navShine {
+  0%, 100% {
+    box-shadow: 0 0 0 rgba(0, 212, 255, 0);
+  }
+  50% {
+    box-shadow: 0 2px 20px rgba(0, 212, 255, 0.3);
+  }
+}
+
+.nav-logo-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.nav-logo-img {
+  height: 40px;
+  width: auto;
 }
 
 .nav-logo {
@@ -72,6 +76,7 @@ nav {
   background-clip: text;
   color: transparent;
   letter-spacing: 2px;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .nav-menu {
@@ -110,6 +115,57 @@ nav {
   width: 100%;
 }
 
+/* Mobile Menu Toggle */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 5px;
+}
+
+.menu-toggle span {
+  width: 25px;
+  height: 3px;
+  background: var(--electric-blue);
+  border-radius: 3px;
+  transition: all 0.3s;
+}
+
+.menu-toggle.active span:nth-child(1) {
+  transform: rotate(45deg) translate(8px, 8px);
+}
+
+.menu-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -7px);
+}
+
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: flex;
+  }
+
+  .nav-menu {
+    position: fixed;
+    top: 80px;
+    right: -100%;
+    width: 100%;
+    background: rgba(12, 26, 59, 0.98);
+    flex-direction: column;
+    padding: 2rem;
+    gap: 1.5rem;
+    transition: right 0.3s ease;
+    border-top: 1px solid rgba(168, 197, 230, 0.1);
+  }
+
+  .nav-menu.active {
+    right: 0;
+  }
+}
+
 /* Hero Section */
 .hero {
   min-height: 100vh;
@@ -140,17 +196,25 @@ nav {
   transition: transform 0.1s ease-out;
 }
 
-
 .hero h1 {
   font-size: 5rem;
-  font-weight: 800;
+  font-weight: 700;
   margin-bottom: 1rem;
   background: linear-gradient(135deg, white, var(--electric-blue), var(--bright-blue));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  letter-spacing: 3px;
+  letter-spacing: 23px;
   animation: fadeInUp 1s ease-out;
+  font-family: 'Montserrat', sans-serif;
+  cursor: default;
+  transition: background 0.3s ease;
+}
+
+.hero h1:hover {
+  background: linear-gradient(135deg, var(--bright-blue), white, var(--electric-blue));
+  -webkit-background-clip: text;
+  background-clip: text;
 }
 
 .hero-tagline {
@@ -173,6 +237,8 @@ nav {
   transition: all 0.3s;
   animation: fadeInUp 1s ease-out 0.4s both;
   box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
+  position: relative;
+  overflow: hidden;
 }
 
 .hero-cta:hover {
@@ -180,22 +246,22 @@ nav {
   box-shadow: 0 15px 40px rgba(0, 212, 255, 0.5);
 }
 
-.hero::before {
-  content: "";
+/* Ripple Effect */
+.ripple {
   position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  background-image: 
-    radial-gradient(circle at 20% 50%, rgba(0, 212, 255, 0.05) 0%, transparent 50%),
-    radial-gradient(circle at 80% 80%, rgba(91, 155, 213, 0.05) 0%, transparent 50%);
-  background-repeat: no-repeat;
-  background-size: cover;
-  z-index: 0;
-  /* Removed animation for static effect */
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.6);
+  transform: scale(0);
+  animation: ripple-animation 0.6s ease-out;
+  pointer-events: none;
 }
 
+@keyframes ripple-animation {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
 
 @keyframes fadeInUp {
   from {
@@ -208,24 +274,14 @@ nav {
   }
 }
 
-@keyframes pulse {
-  0%, 100% {
-    opacity: 0.5;
-  }
-  50% {
-    opacity: 1;
-  }
-}
-
 /* Services Section */
 .services {
   padding: 8rem 5%;
   position: relative;
   border-top: none;
-  background: rgba(12, 26, 59, 0.2); /* subtle overlay */
-  backdrop-filter: blur(12px);       /* optional */
+  background: rgba(12, 26, 59, 0.2);
+  backdrop-filter: blur(12px);
 }
-
 
 .section-header {
   text-align: center;
@@ -240,6 +296,7 @@ nav {
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .section-subtitle {
@@ -280,11 +337,11 @@ nav {
   transition: transform 0.3s;
 }
 
-.service-card:hover::before {
+.service-card.hover-active::before {
   transform: scaleX(1);
 }
 
-.service-card:hover {
+.service-card.hover-active {
   transform: translateY(-10px);
   border-color: var(--bright-blue);
   box-shadow: 0 10px 40px rgba(91, 155, 213, 0.2);
@@ -300,6 +357,7 @@ nav {
   font-size: 1.5rem;
   margin-bottom: 1rem;
   color: white;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .service-card p {
@@ -346,11 +404,11 @@ nav {
   z-index: -1;
 }
 
-.pricing-card:hover::after {
+.pricing-card.hover-active::after {
   opacity: 1;
 }
 
-.pricing-card:hover {
+.pricing-card.hover-active {
   transform: translateY(-10px);
   box-shadow: 0 20px 50px rgba(74, 123, 167, 0.3);
 }
@@ -362,6 +420,7 @@ nav {
   color: var(--electric-blue);
   text-transform: uppercase;
   letter-spacing: 1px;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .pricing-price {
@@ -417,6 +476,135 @@ nav {
   transform: translateY(-2px);
   background: linear-gradient(135deg, var(--accent-blue), #3a5f87);
   box-shadow: 0 10px 30px rgba(91, 155, 213, 0.3);
+}
+
+/* Modal/Popup */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 2000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(8px);
+  animation: fadeIn 0.3s ease;
+}
+
+.modal.active {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background: rgba(12, 26, 59, 0.95);
+  backdrop-filter: var(--glass-blur);
+  border: 1px solid rgba(168, 197, 230, 0.2);
+  border-radius: 20px;
+  padding: 3rem;
+  max-width: 600px;
+  width: 90%;
+  position: relative;
+  animation: slideUp 0.3s ease;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.modal-close {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  font-size: 2rem;
+  color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+  transition: color 0.3s;
+  background: none;
+  border: none;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-close:hover {
+  color: var(--electric-blue);
+}
+
+.modal-title {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: var(--electric-blue);
+  font-family: 'Montserrat', sans-serif;
+}
+
+.modal-details {
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.8;
+  margin-bottom: 2rem;
+}
+
+.modal-details h4 {
+  color: var(--bright-blue);
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.modal-details ul {
+  list-style: none;
+  margin: 1rem 0;
+}
+
+.modal-details ul li {
+  padding: 0.5rem 0;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.modal-details ul li::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: var(--electric-blue);
+}
+
+.modal-cta {
+  width: 100%;
+  padding: 1.2rem;
+  background: linear-gradient(135deg, var(--electric-blue), var(--bright-blue));
+  color: white;
+  border: none;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.3s;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.modal-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(0, 212, 255, 0.5);
 }
 
 /* About Section */
@@ -567,10 +755,6 @@ footer {
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  .nav-menu {
-    display: none;
-  }
-
   .hero h1 {
     font-size: 3rem;
   }
@@ -592,8 +776,7 @@ footer {
     grid-template-columns: 1fr;
   }
 
-  .about-content,
-  .contact-form {
+  .modal-content {
     padding: 2rem;
   }
 }
@@ -601,11 +784,19 @@ footer {
 @media (max-width: 480px) {
   .hero h1 {
     font-size: 2.5rem;
-    letter-spacing: 1px;
+    letter-spacing: 10px;
   }
 
   .nav-logo {
     font-size: 1.5rem;
+  }
+
+  .nav-logo-img {
+    height: 30px;
+  }
+
+  .modal-content {
+    padding: 1.5rem;
   }
 }
 
