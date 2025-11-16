@@ -3,14 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NIVIAN - AI Consulting Excellence</title>
+  <title>NIVIAN | Custom AI</title>
+  <link rel="icon" type="image/png" href="logo1SMALL.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <!-- Navigation -->
   <nav>
-    <div class="nav-logo">NIVIAN</div>
-    <ul class="nav-menu">
+    <div class="nav-logo-container">
+      <img src="logo1.png" alt="NIVIAN Logo" class="nav-logo-img">
+      <div class="nav-logo">NIVIAN</div>
+    </div>
+    <div class="menu-toggle" id="menuToggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <ul class="nav-menu" id="navMenu">
       <li><a href="#home">Home</a></li>
       <li><a href="#services">Services</a></li>
       <li><a href="#pricing">Pricing</a></li>
@@ -23,8 +35,8 @@
   <section id="home" class="hero">
     <div class="hero-content">
       <h1>NIVIAN</h1>
-      <p class="hero-tagline">Transforming Businesses Through Intelligent AI Solutions</p>
-      <a href="#contact" class="hero-cta">Get Started</a>
+      <p class="hero-tagline">Custom, Safe, Private AI Solutions for Australian SMEs</p>
+      <a href="#contact" class="hero-cta" id="heroCta">Get Started</a>
     </div>
   </section>
 
@@ -32,26 +44,26 @@
   <section id="services" class="services">
     <div class="section-header fade-in">
       <h2 class="section-title">Our Services</h2>
-      <p class="section-subtitle">Cutting-edge AI consulting tailored to elevate your business operations and drive innovation</p>
+      <p class="section-subtitle">Bring the power of AI into your business securely, privately, and with complete control.</p>
     </div>
     
     <div class="services-grid">
       <div class="service-card fade-in">
-        <div class="service-icon">🤖</div>
-        <h3>Custom AI Assistants</h3>
-        <p>Build intelligent virtual assistants tailored to your business needs. Automate customer service, streamline internal operations, and provide 24/7 support with conversational AI that understands context and delivers human-like interactions.</p>
+        <div class="service-icon">1</div>
+        <h3>Core: Secure AI Setup</h3>
+        <p>Give your team safe, compliant access to AI, without the complexity. We set up and manage business-grade AI tools such as ChatGPT Business and Microsoft Copilot. Your systems are integrated securely with email, documents, and internal workflows, with strict privacy configurations to ensure your data stays protected. Perfect for SMEs wanting reliable AI without custom infrastructure.</p>
       </div>
       
       <div class="service-card fade-in">
-        <div class="service-icon">🔒</div>
-        <h3>Maximum Security and Compliance</h3>
-        <p>Ensure your AI implementations meet the highest security standards and regulatory requirements. We provide end-to-end encryption, data privacy protection, and compliance solutions for GDPR, HIPAA, SOC 2, and industry-specific regulations.</p>
+        <div class="service-icon">2</div>
+        <h3>Pro: Fully Private LLMs</h3>
+        <p>A custom LLM built around your data, hosted entirely in Australia for maximum compliance. Using OpenAI models, we build a private AI system tailored to your organisation. Your LLM can search emails, analyse documents, follow internal policies, and access knowledge bases — all with data stored exclusively in Australia. Ideal for health, legal, consulting, and regulated industries.</p>
       </div>
       
       <div class="service-card fade-in">
-        <div class="service-icon">📄</div>
-        <h3>Integrate Your Companies Documents</h3>
-        <p>Transform your organizational knowledge into an intelligent, searchable AI system. We integrate your documents, manuals, and databases into custom AI solutions that allow instant retrieval, automated summarization, and intelligent insights from your company's collective knowledge.</p>
+        <div class="service-icon">3</div>
+        <h3>Ongoing Support & Management</h3>
+        <p>We keep your AI running smoothly. Updates, monitoring, and optimisation included. Our optional management plans cover system upkeep, access controls, usage monitoring, prompt optimisation, model updates, and new integrations as your needs evolve. You get the benefits of an in-house AI specialist without the overhead.</p>
       </div>
     </div>
   </section>
@@ -64,48 +76,117 @@
     </div>
     
     <div class="pricing-grid">
-      <div class="pricing-card fade-in">
+      <div class="pricing-card fade-in" data-plan="core">
         <div class="pricing-tier">Core</div>
-        <div class="pricing-price">$500<span>/minimum</span></div>
+        <div class="pricing-price">
+          <span class="label">from/</span>$550
+        </div>
         <ul class="pricing-features">
-          <li>Private semi-custom Chatbot</li>
-          <li>Intergrate some company documents</li>
-          <li>Optional Monthly Support</li>
+          <li>Secure setup of ChatGPT Business or Copilot</li>
+          <li>Email + document integration</li>
+          <li>Privacy-focused configuration and support</li>
         </ul>
-        <button class="pricing-btn">Get Started</button>
+        <button class="pricing-btn">Learn More</button>
       </div>
       
-      <div class="pricing-card fade-in">
+      <div class="pricing-card fade-in" data-plan="pro">
         <div class="pricing-tier">Pro</div>
-        <div class="pricing-price">$1000<span>/minimum</span></div>
+        <div class="pricing-price">
+          <span class="label">from/</span>$1000
+        </div>
         <ul class="pricing-features">
-          <li>Private Customised Chatbot</li>
-          <li>Fully intergrate company documents</li>
-          <li>Optional full Australian Data Residency</li>
+          <li>Fully private Azure-hosted LLM in Australia</li>
+          <li>Custom document + email search (RAG)</li>
+          <li>Complete control over data, access, and features</li>
         </ul>
-        <button class="pricing-btn">Get Started</button>
+        <button class="pricing-btn">Learn More</button>
       </div>
     </div>
   </section>
+
+  <!-- Modal Popups -->
+  <div id="modalCore" class="modal">
+    <div class="modal-content">
+      <button class="modal-close">&times;</button>
+      <h3 class="modal-title">Core Plan - From $550</h3>
+      <div class="modal-details">
+        <p>Perfect for small to medium businesses who want a secure, business-grade AI assistant without the complexity of custom infrastructure.</p>
+        
+        <h4>What's Included:</h4>
+        <ul>
+          <li>Setup and configuration of ChatGPT Business or Microsoft Copilot for Business</li>
+          <li>Integration with your organisation’s documents, email, and workflows</li>
+          <li>Privacy and compliance settings fully configured (no data used for training, strict access controls)</li>
+          <li>Basic customisations such as branding, shared knowledge bases, and recommended prompts</li>
+          <li>Email support with 48-hour response time</li>
+          <li>Optional monthly management and optimisation</li>
+        </ul>
+        
+        <h4>Ideal For:</h4>
+        <ul>
+          <li>Startups and SMEs wanting a secure AI assistant</li>
+          <li>Teams needing safe access to AI tools</li>
+          <li>Internal knowledge search and productivity improvement</li>
+          <li>Organisations wanting AI help without full custom hosting</li>
+        </ul>
+      </div>
+      <button class="modal-cta">Contact Us to Get Started</button>
+    </div>
+  </div>
+
+  <div id="modalPro" class="modal">
+    <div class="modal-content">
+      <button class="modal-close">&times;</button>
+      <h3 class="modal-title">Pro Plan - From $1000</h3>
+      <div class="modal-details">
+        <p>The complete solution for organisations requiring maximum privacy, compliance, and control. Your own private AI system, fully hosted in Australia and tailored to your workflows, documents, and security requirements.</p>
+        
+        <h4>What's Included:</h4>
+        <ul>
+          <li>Custom OpenAI deployment in your Azure tenant, with all data stored exclusively in Australia</li>
+          <li>Choice of GPT-3.5 or GPT-4o, depending on cost and performance needs</li>
+          <li>Advanced document search (RAG) built on your SharePoint/OneDrive content</li>
+          <li>Email search and analysis pipeline, enabling AI to reference historical communication</li>
+          <li>Custom-built user interface or integration into Teams/Outlook via Microsoft Bot Framework</li>
+          <li>Configuration of embeddings, vector stores, and data pipelines for fast, accurate responses</li>
+          <li>Role-based access control, usage monitoring, and security hardening</li>
+          <li>Technical documentation so you fully own the system</li>
+          <li>Optional monthly management, optimisation, and monitoring</li>
+        </ul>
+        
+        <h4>Ideal For:</h4>
+        <ul>
+          <li>Health, legal, consulting, finance, and other regulated industries</li>
+          <li>Organisations requiring strict privacy and data sovereignty</li>
+          <li>Businesses wanting advanced AI fully integrated into daily operations</li>
+          <li>Teams that outgrow standard ChatGPT/Copilot offerings and need deeper customisation</li>
+        </ul>
+      </div>
+      <button class="modal-cta">Contact Us to Get Started</button>
+    </div>
+  </div>
 
   <!-- About Section -->
   <section id="about" class="about">
     <div class="section-header fade-in">
       <h2 class="section-title">About Nivian</h2>
-      <p class="section-subtitle">Pioneering the future of artificial intelligence consulting</p>
+      <p class="section-subtitle">Nivian helps Australian businesses adopt AI safely, privately, and with complete confidence.</p>
     </div>
     
     <div class="about-grid">
       <div class="about-box fade-in">
-        <p>NIVIAN is at the forefront of artificial intelligence innovation, dedicated to helping businesses harness the transformative power of AI. Founded by a team of experienced data scientists, machine learning engineers, and business strategists, we bridge the gap between cutting-edge AI technology and practical business applications.</p>
+        <h3>Our Mission</h3>
+        <p>Our mission is to make AI acessible and compliant for all. There are very real security risks with inputting sensive data to public AI systems. We empower firms to use AI without sacrificing privacy, security, or regulatory requirements.</p>
       </div>
       
       <div class="about-box fade-in">
-        <p>Our mission is to democratize AI, making advanced machine learning and neural network solutions accessible to organizations of all sizes. We believe that AI should not be a luxury reserved for tech giants, but a strategic advantage available to every forward-thinking business.</p>
+        <h3>Our Approach</h3>
+        <p>Practical, simple solutions, built around your workflows. We integrate AI directly into your tools and documents so it actually improves daily operations, not complicates them. No over-engineering or complex interfaces.</p>
       </div>
       
       <div class="about-box fade-in">
-        <p>With over 50 successful AI implementations across industries ranging from healthcare to finance, manufacturing to retail, NIVIAN has established itself as a trusted partner in digital transformation. Our approach combines technical excellence with deep business acumen, ensuring that every AI solution we deliver generates measurable ROI and sustainable competitive advantage.</p>
+        <h3>Our Values</h3>
+        <p>Clarity. Security. Humility. Every system we build should be simple and able to be understood by anyone while also mainting the highest privacy standards. We also keep things grounded and honest, no ego, no jargon.</p>
       </div>
     </div>
   </section>
@@ -120,7 +201,7 @@
     <div class="contact-container fade-in">
       <div class="contact-info" style="text-align: center; margin-bottom: 2rem;">
         <p style="font-size: 1.2rem; color: var(--soft-blue);">
-          📧 <a href="mailto:contact@nivian.co" style="color: var(--electric-blue); text-decoration: none;">contact@nivian.co</a>
+          Reach us at: <a href="mailto:contact@nivian.co" style="color: var(--electric-blue); text-decoration: none;">contact@nivian.co</a>
         </p>
       </div>
       
@@ -144,7 +225,7 @@
           </div>
           
           <div class="form-group">
-            <label for="phone">Phone</label>
+            <label for="phone">Phone (Optional)</label>
             <input type="tel" id="phone" name="phone">
           </div>
           
@@ -161,7 +242,7 @@
 
   <!-- Footer -->
   <footer>
-    <p>&copy; 2024 NIVIAN. All rights reserved.</p>
+    <p>&copy; 2025 NIVIAN. All rights reserved. 72 953 120 863.</p>
   </footer>
 
   <script src="script.js"></script>
