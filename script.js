@@ -132,8 +132,9 @@ heroCta.addEventListener('click', function(e) {
 });
 
 // Modal functionality
-const modalCore = document.getElementById('modalCore');
-const modalPro = document.getElementById('modalPro');
+const modalAiAssistantCore = document.getElementById('modalAiAssistantCore');
+const modalAiAssistantPro = document.getElementById('modalAiAssistantPro');
+const modalCustomProject = document.getElementById('modalCustomProject');
 
 // Open modals when pricing buttons are clicked
 document.querySelectorAll('.pricing-btn').forEach(btn => {
@@ -141,10 +142,12 @@ document.querySelectorAll('.pricing-btn').forEach(btn => {
     const card = this.closest('.pricing-card');
     const plan = card.getAttribute('data-plan');
     
-    if (plan === 'core') {
-      modalCore.classList.add('active');
-    } else if (plan === 'pro') {
-      modalPro.classList.add('active');
+    if (plan === 'ai-assistant-core') {
+      modalAiAssistantCore.classList.add('active');
+    } else if (plan === 'ai-assistant-pro') {
+      modalAiAssistantPro.classList.add('active');
+    } else if (plan === 'custom-project') {
+      modalCustomProject.classList.add('active');
     }
   });
 });
@@ -178,6 +181,24 @@ document.querySelectorAll('.modal-cta').forEach(btn => {
         behavior: 'smooth',
         block: 'start'
       });
+    }
+  });
+});
+
+// FAQ Accordion functionality
+document.querySelectorAll('.faq-question').forEach(button => {
+  button.addEventListener('click', function() {
+    const faqItem = this.parentElement;
+    const isActive = faqItem.classList.contains('active');
+    
+    // Close all FAQ items
+    document.querySelectorAll('.faq-item').forEach(item => {
+      item.classList.remove('active');
+    });
+    
+    // If the clicked item wasn't active, open it
+    if (!isActive) {
+      faqItem.classList.add('active');
     }
   });
 });
