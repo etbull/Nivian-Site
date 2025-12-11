@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NIVIAN | Custom AI</title>
+  <title>NIVIAN | Custom AI Solutions</title>
   <link rel="icon" type="image/png" href="logo1SMALL.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -26,11 +26,11 @@
       <li><a href="#home">Home</a></li>
       <li><a href="#services">Services</a></li>
       <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#faq">FAQ</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
   </nav>
-
   <!-- Hero Section -->
   <section id="home" class="hero">
     <div class="hero-content">
@@ -39,7 +39,6 @@
       <a href="#contact" class="hero-cta" id="heroCta">Get Started</a>
     </div>
   </section>
-
   <!-- Services Section -->
   <section id="services" class="services">
     <div class="section-header fade-in">
@@ -50,24 +49,23 @@
     <div class="services-grid">
       <div class="service-card fade-in">
         <div class="service-icon">1</div>
-        <h3>Core: Secure AI Setup</h3>
-        <p>Give your team safe, compliant access to AI, without the complexity. We set up and manage business-grade AI tools such as ChatGPT Business and Microsoft Copilot. Your systems are integrated securely with email, documents, and internal workflows, with strict privacy configurations to ensure your data stays protected. Perfect for SMEs wanting reliable AI without custom infrastructure.</p>
+        <h3>Secure AI Assistants</h3>
+        <p>A custom LLM built around your data, hosted entirely in Australia for maximum compliance. Using OpenAI models, we build a private AI system tailored to your organisation. Your LLM can search emails, analyse documents, follow internal policies, and access knowledge bases, all with data stored exclusively in Australia. Ideal for health, legal, consulting, and regulated industries.</p>
       </div>
       
       <div class="service-card fade-in">
         <div class="service-icon">2</div>
-        <h3>Pro: Fully Private LLMs</h3>
-        <p>A custom LLM built around your data, hosted entirely in Australia for maximum compliance. Using OpenAI models, we build a private AI system tailored to your organisation. Your LLM can search emails, analyse documents, follow internal policies, and access knowledge bases — all with data stored exclusively in Australia. Ideal for health, legal, consulting, and regulated industries.</p>
+        <h3>Custom Projects</h3>
+        <p>Do you have a specific problem or workflow you would like AI's help with? Nivian offers custom solutions to whatever your problem is, whether it be automating invoicing, filtering through your company's data, or something else entirely. Reach out to us for a free consultation to learn more.</p>
       </div>
       
       <div class="service-card fade-in">
         <div class="service-icon">3</div>
         <h3>Ongoing Support & Management</h3>
-        <p>We keep your AI running smoothly. Updates, monitoring, and optimisation included. Our optional management plans cover system upkeep, access controls, usage monitoring, prompt optimisation, model updates, and new integrations as your needs evolve. You get the benefits of an in-house AI specialist without the overhead.</p>
+        <p>We keep your AI running smoothly. Updates, monitoring, and optimisation included. Our management plans cover system upkeep, access controls, usage monitoring, prompt optimisation, model updates, and certain new integrations as your needs evolve. You get the benefits of an in-house AI specialist without the overhead.</p>
       </div>
     </div>
   </section>
-
   <!-- Pricing Section -->
   <section id="pricing" class="pricing">
     <div class="section-header fade-in">
@@ -76,96 +74,201 @@
     </div>
     
     <div class="pricing-grid">
-      <div class="pricing-card fade-in" data-plan="core">
-        <div class="pricing-tier">Core</div>
+      <div class="pricing-card fade-in" data-plan="ai-assistant-core">
+        <div class="pricing-tier">Core: AI Assistant</div>
         <div class="pricing-price">
-          <span class="label">from/</span>$550
+          <span class="label">from/</span>$999
         </div>
         <ul class="pricing-features">
-          <li>Secure setup of ChatGPT Business or Copilot</li>
-          <li>Email + document integration</li>
+          <li>Secure setup of custom AI Assistant</li>
+          <li>Custom prompts and model selection</li>
           <li>Privacy-focused configuration and support</li>
         </ul>
         <button class="pricing-btn">Learn More</button>
       </div>
-      
-      <div class="pricing-card fade-in" data-plan="pro">
-        <div class="pricing-tier">Pro</div>
+      <div class="pricing-card fade-in" data-plan="ai-assistant-pro">
+        <div class="pricing-tier">Pro: AI Assistant</div>
         <div class="pricing-price">
-          <span class="label">from/</span>$1000
+          <span class="label">from/</span>$3999
         </div>
         <ul class="pricing-features">
-          <li>Fully private Azure-hosted LLM in Australia</li>
-          <li>Custom document + email search (RAG)</li>
+          <li>Secure setup of advanced AI Assistant</li>
+          <li>Email + full document integration</li>
+          <li>Custom data integration</li>
+        </ul>
+        <button class="pricing-btn">Learn More</button>
+      </div>
+      
+      <div class="pricing-card fade-in" data-plan="custom-project">
+        <div class="pricing-tier">Custom Project</div>
+        <div class="pricing-price">
+          <span class="label">Contact us for pricing</span>
+        </div>
+        <ul class="pricing-features">
+          <li>Solutions for your business problems</li>
+          <li>Options for full Australian data residency</li>
           <li>Complete control over data, access, and features</li>
         </ul>
         <button class="pricing-btn">Learn More</button>
       </div>
     </div>
   </section>
-
   <!-- Modal Popups -->
-  <div id="modalCore" class="modal">
+  <div id="modalAiAssistantCore" class="modal">
     <div class="modal-content">
       <button class="modal-close">&times;</button>
-      <h3 class="modal-title">Core Plan - From $550</h3>
+      <h3 class="modal-title">Core: AI Assistant - From $999</h3>
       <div class="modal-details">
-        <p>Perfect for small to medium businesses who want a secure, business-grade AI assistant without the complexity of custom infrastructure.</p>
+        <p>Perfect for small businesses who want a secure, custom AI assistant tailored to their needs without complex infrastructure.</p>
         
         <h4>What's Included:</h4>
         <ul>
-          <li>Setup and configuration of ChatGPT Business or Microsoft Copilot for Business</li>
-          <li>Integration with your organisation’s documents, email, and workflows</li>
-          <li>Privacy and compliance settings fully configured (no data used for training, strict access controls)</li>
-          <li>Basic customisations such as branding, shared knowledge bases, and recommended prompts</li>
+          <li>Setup and configuration of a custom AI assistant hosted securely</li>
+          <li>Custom system prompts tailored to your business needs and workflows</li>
+          <li>Model selection based on your requirements (GPT-4o, GPT-4o-mini, or other models)</li>
+          <li>Privacy and compliance settings fully configured (no data used for training)</li>
+          <li>Customizations including branding and recommended prompts</li>
           <li>Email support with 48-hour response time</li>
-          <li>Optional monthly management and optimisation</li>
         </ul>
         
         <h4>Ideal For:</h4>
         <ul>
-          <li>Startups and SMEs wanting a secure AI assistant</li>
-          <li>Teams needing safe access to AI tools</li>
-          <li>Internal knowledge search and productivity improvement</li>
-          <li>Organisations wanting AI help without full custom hosting</li>
+          <li>Small businesses wanting a secure, customized AI assistant</li>
+          <li>Teams needing AI help with consistent workflows</li>
+          <li>Organizations wanting AI without document integration complexity</li>
         </ul>
       </div>
       <button class="modal-cta">Contact Us to Get Started</button>
     </div>
   </div>
 
-  <div id="modalPro" class="modal">
+  <div id="modalAiAssistantPro" class="modal">
     <div class="modal-content">
       <button class="modal-close">&times;</button>
-      <h3 class="modal-title">Pro Plan - From $1000</h3>
+      <h3 class="modal-title">Pro: AI Assistant - From $3999</h3>
       <div class="modal-details">
-        <p>The complete solution for organisations requiring maximum privacy, compliance, and control. Your own private AI system, fully hosted in Australia and tailored to your workflows, documents, and security requirements.</p>
+        <p>Advanced AI assistant solution with full document and email integration, perfect for businesses requiring comprehensive data access and analysis capabilities.</p>
         
         <h4>What's Included:</h4>
         <ul>
-          <li>Custom OpenAI deployment in your Azure tenant, with all data stored exclusively in Australia</li>
-          <li>Choice of GPT-3.5 or GPT-4o, depending on cost and performance needs</li>
-          <li>Advanced document search (RAG) built on your SharePoint/OneDrive content</li>
-          <li>Email search and analysis pipeline, enabling AI to reference historical communication</li>
-          <li>Custom-built user interface or integration into Teams/Outlook via Microsoft Bot Framework</li>
-          <li>Configuration of embeddings, vector stores, and data pipelines for fast, accurate responses</li>
-          <li>Role-based access control, usage monitoring, and security hardening</li>
-          <li>Technical documentation so you fully own the system</li>
-          <li>Optional monthly management, optimisation, and monitoring</li>
+          <li>Everything in Core plan, plus:</li>
+          <li>Full integration with SharePoint, OneDrive, and document libraries</li>
+          <li>Email search and analysis capabilities through Outlook integration</li>
+          <li>Advanced document search (RAG) with semantic understanding</li>
+          <li>Custom data source integration (databases etc.)</li>
+          <li>Role-based access control ensuring proper permissions</li>
+          <li>Priority email support with 48-hour response time</li>
+          <li>Monthly management, optimization, and monitoring included</li>
         </ul>
         
         <h4>Ideal For:</h4>
         <ul>
-          <li>Health, legal, consulting, finance, and other regulated industries</li>
-          <li>Organisations requiring strict privacy and data sovereignty</li>
-          <li>Businesses wanting advanced AI fully integrated into daily operations</li>
-          <li>Teams that outgrow standard ChatGPT/Copilot offerings and need deeper customisation</li>
+          <li>Growing businesses with extensive document libraries</li>
+          <li>Teams needing AI to search across emails and documents</li>
+          <li>Organizations requiring intelligent data analysis</li>
+          <li>Businesses wanting comprehensive AI integration into daily operations</li>
         </ul>
       </div>
       <button class="modal-cta">Contact Us to Get Started</button>
     </div>
   </div>
 
+  <div id="modalCustomProject" class="modal">
+    <div class="modal-content">
+      <button class="modal-close">&times;</button>
+      <h3 class="modal-title">Custom Project - Custom Pricing</h3>
+      <div class="modal-details">
+        <p>Tailored AI solutions designed specifically for your unique business challenges and workflows. Whether it's automation, data processing, or specialized AI applications, we build exactly what you need.</p>
+        
+        <h4>What's Included:</h4>
+        <ul>
+          <li>Free initial consultation to understand your specific needs</li>
+          <li>Custom solution design tailored to your business problems</li>
+          <li>Options for full Australian data residency and sovereignty</li>
+          <li>Integration with your existing systems and workflows</li>
+          <li>Automation of repetitive tasks and processes</li>
+          <li>Custom data analysis and reporting capabilities</li>
+          <li>Complete control over data, access, and features</li>
+          <li>Technical documentation and training</li>
+          <li>Ongoing support and maintenance options</li>
+        </ul>
+        
+        <h4>Ideal For:</h4>
+        <ul>
+          <li>Businesses with unique or complex requirements</li>
+          <li>Organizations in regulated industries (health, legal, finance)</li>
+          <li>Companies requiring full data sovereignty and compliance</li>
+          <li>Businesses needing specialized automation or AI capabilities</li>
+          <li>Teams with specific workflows that need AI enhancement</li>
+        </ul>
+      </div>
+      <button class="modal-cta">Contact Us to Get Started</button>
+    </div>
+  </div>
+  <!-- FAQ Section -->
+  <section id="faq" class="faq">
+    <div class="section-header fade-in">
+      <h2 class="section-title">Frequently Asked Questions</h2>
+      <p class="section-subtitle">Everything you need to know about our AI solutions</p>
+    </div>
+    
+    <div class="faq-container">
+      <div class="faq-item fade-in">
+        <button class="faq-question">
+          <span>Why is data sovereignty important for Australian businesses?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Australian privacy laws, including the Privacy Act 1988, require businesses to protect personal information. Hosting your AI in Australia ensures compliance with these regulations, keeps your data within Australian legal jurisdiction, and protects against foreign access requests. For industries like healthcare and legal services, this is often mandatory.</p>
+        </div>
+      </div>
+      <div class="faq-item fade-in">
+        <button class="faq-question">
+          <span>What is the difference between Core and Pro?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>The AI Assistant plans (Core and Pro) provide ready-to-deploy AI assistants customised to various degrees. Core allows you to have custom branding, system prompts, models, and full Australian data residency. Pro does the same except it has full integration with SharePoint, OneDrive, and document libraries as well as email search and custom data-source integration. We can also fine-tune pro assistants to improve at specific tasks your business needs.</p>
+        </div>
+      </div>
+      <div class="faq-item fade-in">
+        <button class="faq-question">
+          <span>What's the difference between the AI Assistant and Custom Project plans?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>The AI Assistant plans (Core and Pro) provide ready-to-deploy AI assistants with varying levels of integration. Core is perfect for basic AI assistance, while Pro adds document and email search capabilities. Custom Projects are built from scratch for your specific business problems, offering complete flexibility and tailored solutions for unique requirements.</p>
+        </div>
+      </div>
+      <div class="faq-item fade-in">
+        <button class="faq-question">
+          <span>How long does implementation typically take?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Core and Pro AI Assistant setups typically take 1-2 weeks from kickoff to deployment. Custom Project timelines vary based on complexity but generally range from 2-12 weeks. We'll provide a detailed timeline during our initial consultation.</p>
+        </div>
+      </div>
+      <div class="faq-item fade-in">
+        <button class="faq-question">
+          <span>Can you integrate with our existing Microsoft 365 environment?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Absolutely. The Pro AI Assistant and Custom Projects integrate seamlessly with Microsoft 365, including SharePoint, OneDrive, Outlook, and Teams. We configure secure access using your existing authentication systems and permissions, ensuring AI respects your current security policies and user access controls.</p>
+        </div>
+      </div>
+      <div class="faq-item fade-in">
+        <button class="faq-question">
+          <span>What ongoing costs should we expect after the initial setup?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Ongoing costs vary by plan. Core AI Assistants typically incur $50-150/month in hosting and API costs in addition to a $500 support charge. Pro AI Assistants range from $400-1500/month depending on usage in additon to a $1000 support charge. Custom Projects have variable costs based on complexity and scale. We provide transparent cost estimates upfront.</p>
+        </div>
+      </div>
+    </div>
+  </section>
   <!-- About Section -->
   <section id="about" class="about">
     <div class="section-header fade-in">
@@ -176,7 +279,7 @@
     <div class="about-grid">
       <div class="about-box fade-in">
         <h3>Our Mission</h3>
-        <p>Our mission is to make AI acessible and compliant for all. There are very real security risks with inputting sensive data to public AI systems. We empower firms to use AI without sacrificing privacy, security, or regulatory requirements.</p>
+        <p>Our mission is to make AI accessible and compliant for all. There are very real security risks with inputting sensitive data to public AI systems. We empower firms to use AI without sacrificing privacy, security, or regulatory requirements.</p>
       </div>
       
       <div class="about-box fade-in">
@@ -186,11 +289,10 @@
       
       <div class="about-box fade-in">
         <h3>Our Values</h3>
-        <p>Clarity. Security. Humility. Every system we build should be simple and able to be understood by anyone while also mainting the highest privacy standards. We also keep things grounded and honest, no ego, no jargon.</p>
+        <p>Clarity. Security. Humility. Every system we build should be simple and able to be understood by anyone while also maintaining the highest privacy standards. We also keep things grounded and honest, no ego, no jargon.</p>
       </div>
     </div>
   </section>
-
   <!-- Contact Section -->
   <section id="contact" class="contact">
     <div class="section-header fade-in">
@@ -239,12 +341,22 @@
       </form>
     </div>
   </section>
-
   <!-- Footer -->
   <footer>
+    <div class="social-links">
+      <a href="https://www.linkedin.com/company/nivianco" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+        </svg>
+      </a>
+      <a href="https://www.instagram.com/nivianco/?utm_source=ig_web_button_share_sheet" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+        </svg>
+      </a>
+    </div>
     <p>&copy; 2025 NIVIAN. All rights reserved. 72 953 120 863.</p>
   </footer>
-
   <script src="script.js"></script>
 </body>
 </html>
