@@ -435,9 +435,8 @@ nav {
 .pricing-price {
   font-size: 3rem;
   font-weight: 700;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.3rem;
   color: white;
-  min-height: 4.5rem;
   display: flex;
   align-items: center;
 }
@@ -445,6 +444,17 @@ nav {
 .pricing-price span {
   font-size: 1.2rem;
   color: rgba(255, 255, 255, 0.6);
+  font-weight: 400;
+}
+
+.pricing-dev-fee {
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 1.5rem;
+  min-height: 1.5rem;
+}
+
+.pricing-dev-fee span {
   font-weight: 400;
 }
 
@@ -489,6 +499,39 @@ nav {
   transform: translateY(-2px);
   background: linear-gradient(135deg, var(--accent-blue), #3a5f87);
   box-shadow: 0 10px 30px rgba(91, 155, 213, 0.3);
+}
+
+/* Demo Section */
+.demo {
+  padding: 8rem 5%;
+  background: rgba(12, 26, 59, 0.2);
+  backdrop-filter: blur(12px);
+}
+
+.demo-container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.video-wrapper {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  height: 0;
+  overflow: hidden;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: var(--glass-blur);
+  border: 1px solid rgba(168, 197, 230, 0.2);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+.video-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
 }
 
 /* Modal/Popup */
@@ -623,8 +666,7 @@ nav {
 /* FAQ Section */
 .faq {
   padding: 8rem 5%;
-  background: rgba(12, 26, 59, 0.2);
-  backdrop-filter: blur(12px);
+  background: rgba(0, 0, 0, 0.2);
 }
 
 .faq-container {
@@ -700,6 +742,8 @@ nav {
 /* About Section */
 .about {
   padding: 8rem 5%;
+  background: rgba(12, 26, 59, 0.2);
+  backdrop-filter: blur(12px);
 }
 
 .about-grid {
