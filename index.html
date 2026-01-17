@@ -7,12 +7,12 @@
   <link rel="icon" type="image/png" href="logo1SMALL.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <!-- Navigation -->
-  <nav>
+  <nav id="mainNav" class="nav-hidden">
     <div class="nav-logo-container">
       <img src="logo1.png" alt="NIVIAN Logo" class="nav-logo-img">
       <div class="nav-logo">NIVIAN</div>
@@ -32,134 +32,443 @@
       <li><a href="#contact">Contact</a></li>
     </ul>
   </nav>
+
+  <!-- Scroll Indicator -->
+  <div class="scroll-indicator" id="scrollIndicator">
+    <div class="scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+
   <!-- Hero Section -->
   <section id="home" class="hero">
+    <div class="hero-background">
+      <div class="hero-gradient-1"></div>
+      <div class="hero-gradient-2"></div>
+      <div class="hero-grid"></div>
+    </div>
     <div class="hero-content">
-      <h1>NIVIAN</h1>
-      <p class="hero-tagline">Custom, Safe, Private AI Solutions for Australian SMEs</p>
-      <a href="#contact" class="hero-cta" id="heroCta">Get Started</a>
+      <div class="hero-label">AI SOLUTIONS FOR AUSTRALIA</div>
+      <h1 class="hero-title">
+        <span class="hero-title-line">NIVIAN</span>
+      </h1>
+      <p class="hero-subtitle">Custom, Safe, Private AI Solutions<br/>for Australian SMEs</p>
+      <div class="hero-cta-container">
+        <a href="#contact" class="hero-cta">
+          <span>Get Started</span>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="stat-number">100%</div>
+        <div class="stat-label">Australian Hosted</div>
+      </div>
+      <div class="hero-stat">
+        <div class="stat-number">24/7</div>
+        <div class="stat-label">AI Support</div>
+      </div>
+      <div class="hero-stat">
+        <div class="stat-number">GPT</div>
+        <div class="stat-label">Integration</div>
+      </div>
     </div>
   </section>
+
+  <!-- Pulsing Separator -->
+  <div class="section-separator"></div>
+
   <!-- Services Section -->
   <section id="services" class="services">
-    <div class="section-header fade-in">
-      <h2 class="section-title">Our Services</h2>
-      <p class="section-subtitle">Bring the power of AI into your business securely, privately, and with complete control.</p>
+    <div class="section-header-large">
+      <div class="section-number">01</div>
+      <h2 class="section-title-large">Our Services</h2>
+      <p class="section-subtitle-large">Bring the power of AI into your business securely, privately, and with complete control.</p>
     </div>
     
-    <div class="services-grid">
-      <div class="service-card fade-in">
-        <div class="service-icon">1</div>
-        <h3>Secure AI Assistants</h3>
-        <p>A custom LLM built around your data, hosted entirely in Australia for maximum compliance. Using OpenAI models, we build a private AI system tailored to your organisation. Your LLM can search emails, analyse documents, follow internal policies, and access knowledge bases, all with data stored exclusively in Australia. Ideal for health, legal, consulting, and regulated industries.</p>
+    <div class="services-layout">
+      <div class="service-block service-block-1">
+        <div class="service-number">01</div>
+        <h3>Secure AI<br/>Assistants</h3>
+        <div class="service-content">
+          <p>A custom LLM built around your data, hosted entirely in Australia for maximum compliance. Using OpenAI models, we build a private AI system tailored to your organisation.</p>
+          <div class="service-features">
+            <span>Email Integration</span>
+            <span>Document Analysis</span>
+            <span>Policy Compliance</span>
+            <span>Knowledge Bases</span>
+          </div>
+        </div>
       </div>
       
-      <div class="service-card fade-in">
-        <div class="service-icon">2</div>
-        <h3>Custom AI Agents</h3>
-        <p>Do you have a specific problem or workflow you would like AI's help with? Nivian offers custom solutions to whatever your problem is, whether it be automating invoicing, filtering through your company's data, or something else entirely. Reach out to us for a free consultation to learn more.</p>
+      <div class="service-block service-block-2">
+        <div class="service-number">02</div>
+        <h3>Custom AI<br/>Agents</h3>
+        <div class="service-content">
+          <p>Do you have a specific problem or workflow you would like AI's help with? Nivian offers custom solutions to whatever your problem is.</p>
+          <div class="service-features">
+            <span>Invoice Automation</span>
+            <span>Data Filtering</span>
+            <span>Workflow Integration</span>
+            <span>Free Consultation</span>
+          </div>
+        </div>
       </div>
       
-      <div class="service-card fade-in">
-        <div class="service-icon">3</div>
-        <h3>Copilot AI Agents</h3>
-        <p>We keep your AI running smoothly. Updates, monitoring, and optimisation included. Our management plans cover system upkeep, access controls, usage monitoring, prompt optimisation, model updates, and certain new integrations as your needs evolve. You get the benefits of an in-house AI specialist without the overhead.</p>
+      <div class="service-block service-block-3">
+        <div class="service-number">03</div>
+        <h3>Copilot AI<br/>Agents</h3>
+        <div class="service-content">
+          <p>We keep your AI running smoothly. Updates, monitoring, and optimisation included. Our management plans cover system upkeep and evolution.</p>
+          <div class="service-features">
+            <span>System Monitoring</span>
+            <span>Access Controls</span>
+            <span>Model Updates</span>
+            <span>Integration Support</span>
+          </div>
+        </div>
       </div>
     </div>
   </section>
+
   <!-- Pricing Section -->
   <section id="pricing" class="pricing">
-    <div class="section-header fade-in">
-      <h2 class="section-title">Pricing Plans</h2>
-      <p class="section-subtitle">Choose the perfect plan for your AI transformation journey</p>
+    <div class="section-header-large">
+      <div class="section-number">02</div>
+      <h2 class="section-title-large">Pricing</h2>
+      <p class="section-subtitle-large">Choose the perfect plan for your AI transformation journey</p>
     </div>
     
     <div class="pricing-grid">
-      <div class="pricing-card fade-in" data-plan="ai-assistant-core">
-        <div class="pricing-tier">Core: AI Assistant</div>
-        <div class="pricing-price">
-          <span class="label">from </span>$599<span class="label">/month</span>
+      <div class="pricing-card" data-plan="ai-assistant-core">
+        <div class="pricing-header">
+          <div class="pricing-tier">Core</div>
+          <div class="pricing-subtitle">AI Assistant</div>
         </div>
-        <div class="pricing-dev-fee">
-          <span class="label">$999 Development Fee (One-off)</span>
+        <div class="pricing-cost">
+          <div class="pricing-price">
+            <span class="price-label">from </span>
+            <span class="price-amount">$599</span>
+            <span class="price-label">/month</span>
+          </div>
+          <div class="pricing-dev-fee">$999 Development Fee (One-off)</div>
         </div>
         <ul class="pricing-features">
           <li>Secure setup of custom AI Assistant</li>
           <li>Custom prompts and model selection</li>
           <li>Privacy-focused configuration and support</li>
+          <li>3 built-in custom AI Agents to automate complex tasks</li>
         </ul>
-        <button class="pricing-btn">Learn More</button>
+        <button class="pricing-btn">
+          <span>Learn More</span>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </button>
       </div>
-      <div class="pricing-card fade-in" data-plan="ai-assistant-pro">
-        <div class="pricing-tier">Pro: AI Assistant</div>
-        <div class="pricing-price">
-          <span class="label">from </span>$1599<span class="label">/month</span>
+
+      <div class="pricing-card pricing-card-featured" data-plan="ai-assistant-pro">
+        <div class="pricing-badge">Most Popular</div>
+        <div class="pricing-header">
+          <div class="pricing-tier">Pro</div>
+          <div class="pricing-subtitle">AI Assistant</div>
         </div>
-        <div class="pricing-dev-fee">
-          <span class="label">$2499 Development Fee (One-off)</span>
+        <div class="pricing-cost">
+          <div class="pricing-price">
+            <span class="price-label">from </span>
+            <span class="price-amount">$1599</span>
+            <span class="price-label">/month</span>
+          </div>
+          <div class="pricing-dev-fee">$2499 Development Fee (One-off)</div>
         </div>
         <ul class="pricing-features">
           <li>Secure setup of advanced AI Assistant</li>
           <li>Email + full document integration</li>
           <li>Custom data integration</li>
+          <li>3 built-in custom AI Agents to automate complex tasks</li>
         </ul>
-        <button class="pricing-btn">Learn More</button>
+        <button class="pricing-btn">
+          <span>Learn More</span>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </button>
       </div>
       
-      <div class="pricing-card fade-in" data-plan="custom-project">
-        <div class="pricing-tier">Copilot Agent</div>
-        <div class="pricing-price">
-          <span class="label">Contact us for pricing</span>
+      <div class="pricing-card" data-plan="custom-project">
+        <div class="pricing-header">
+          <div class="pricing-tier">Copilot</div>
+          <div class="pricing-subtitle">Agent</div>
+        </div>
+        <div class="pricing-cost">
+          <div class="pricing-price pricing-price-custom">
+            <span class="price-label">Contact us for pricing</span>
+          </div>
         </div>
         <ul class="pricing-features">
           <li>Solutions for your business problems</li>
           <li>Options for full Australian data residency</li>
           <li>Complete control over data, access, and features</li>
         </ul>
-        <button class="pricing-btn">Learn More</button>
+        <button class="pricing-btn">
+          <span>Learn More</span>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </button>
       </div>
     </div>
   </section>
-  
-  <!-- Assistant Demonstration Section -->
+
+  <!-- Demo Section -->
   <section id="demo" class="demo">
-    <div class="section-header fade-in">
-      <h2 class="section-title">Assistant Demonstration</h2>
-      <p class="section-subtitle">See our AI Assistant in action</p>
+    <div class="demo-layout">
+      <div class="demo-text">
+        <div class="section-number">03</div>
+        <h2 class="section-title-large">See It<br/>In Action</h2>
+        <p class="demo-description">Watch how our AI Assistant integrates seamlessly with your Microsoft 365 environment, providing intelligent assistance while keeping your data secure in Australia.</p>
+      </div>
+      <div class="demo-video-container">
+        <div class="video-wrapper">
+          <iframe 
+            width="560" 
+            height="315" 
+            src="https://www.youtube-nocookie.com/embed/KBSBDtqhGEs?si=VIDEO_ID" 
+            title="NIVIAN AI Assistant Demonstration" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+            referrerpolicy="strict-origin-when-cross-origin" 
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section - Horizontal Scroll -->
+  <section id="about" class="about">
+    <div class="section-header-large">
+      <div class="section-number">04</div>
+      <h2 class="section-title-large">About Nivian</h2>
+      <p class="section-subtitle-large">Nivian helps Australian businesses adopt AI safely, privately, and with complete confidence.</p>
     </div>
     
-    <div class="demo-container fade-in">
-      <div class="video-wrapper">
-        <iframe 
-          width="560" 
-          height="315" 
-          src="https://www.youtube-nocookie.com/embed/KBSBDtqhGEs?si=VIDEO_ID" 
-          title="NIVIAN AI Assistant Demonstration" 
-          frameborder="0" 
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-          referrerpolicy="strict-origin-when-cross-origin" 
-          allowfullscreen>
-        </iframe>
+    <div class="about-carousel-container">
+      <div class="about-carousel" id="aboutCarousel">
+        <div class="about-slide">
+          <div class="about-slide-content">
+            <div class="about-slide-number">01</div>
+            <h3>Our Mission</h3>
+            <p>Our mission is to make AI accessible and compliant for all. There are very real security risks with inputting sensitive data to public AI systems. We empower firms to use AI without sacrificing privacy, security, or regulatory requirements.</p>
+          </div>
+        </div>
+        
+        <div class="about-slide">
+          <div class="about-slide-content">
+            <div class="about-slide-number">02</div>
+            <h3>Our Approach</h3>
+            <p>Practical, simple solutions, built around your workflows. We integrate AI directly into your tools and documents so it actually improves daily operations, not complicates them. No over-engineering or complex interfaces.</p>
+          </div>
+        </div>
+        
+        <div class="about-slide">
+          <div class="about-slide-content">
+            <div class="about-slide-number">03</div>
+            <h3>Our Values</h3>
+            <p>Clarity. Security. Humility. Every system we build should be simple and able to be understood by anyone while also maintaining the highest privacy standards. We also keep things grounded and honest, no ego, no jargon.</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="carousel-dots" id="carouselDots">
+        <button class="dot active" data-slide="0"></button>
+        <button class="dot" data-slide="1"></button>
+        <button class="dot" data-slide="2"></button>
       </div>
     </div>
   </section>
-  
+
+  <!-- FAQ Section -->
+  <section id="faq" class="faq">
+    <div class="section-header-large">
+      <div class="section-number">05</div>
+      <h2 class="section-title-large">FAQ</h2>
+      <p class="section-subtitle-large">Everything you need to know about our AI solutions</p>
+    </div>
+    
+    <div class="faq-grid">
+      <div class="faq-item">
+        <button class="faq-question">
+          <span class="faq-q">Why is data sovereignty important for Australian businesses?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Australian privacy laws, including the Privacy Act 1988, require businesses to protect personal information. Hosting your AI in Australia ensures compliance with these regulations, keeps your data within Australian legal jurisdiction, and protects against foreign access requests. For industries like healthcare and legal services, this is often mandatory.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          <span class="faq-q">What is the difference between Core and Pro?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>The AI Assistant plans (Core and Pro) provide ready-to-deploy AI assistants customised to various degrees. Core allows you to have custom branding, system prompts, models, and full Australian data residency. Pro does the same except it has full integration with SharePoint, OneDrive, and document libraries as well as email search and custom data-source integration. We can also fine-tune pro assistants to improve at specific tasks your business needs.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          <span class="faq-q">What's the difference between the AI Assistant and Copilot Agent plans?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>The AI Assistant plans (Core and Pro) provide ready-to-deploy AI assistants with varying levels of integration. Core is perfect for basic AI assistance, while Pro adds document and email search capabilities. Copilot Agents are built from scratch for your specific business problems, offering complete flexibility and tailored solutions for unique requirements.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          <span class="faq-q">How are assistants hosted?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Nivian Assistants are hosted in your Microsoft Tenancy. We force Australian residency for all resources and enforce this with Azure policy to ensure compliance and peace of mind. We can also host in other regions if this is required. Contact us for more info.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          <span class="faq-q">Can you integrate with our existing Microsoft 365 environment?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Absolutely. The Pro AI Assistant and Copilot Agents integrate seamlessly with Microsoft 365, including SharePoint, OneDrive, Outlook, and Teams. We configure secure access using your existing authentication systems and permissions, ensuring AI respects your current security policies and user access controls.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          <span class="faq-q">What can the AI Agents do?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>The AI Agents can connect multiple data sources together as well as perform custom tasks. We can embed it within your current setup using API's exposed by your current tools.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="contact">
+    <div class="contact-layout">
+      <div class="contact-text">
+        <div class="section-number">06</div>
+        <h2 class="section-title-large">Let's Talk</h2>
+        <p class="contact-intro">Ready to transform your business with AI? Let's start the conversation</p>
+        <div class="contact-email">
+          <a href="mailto:contact@nivian.co">contact@nivian.co</a>
+        </div>
+      </div>
+      
+      <div class="contact-form-container">
+        <form action="https://api.web3forms.com/submit" method="POST" class="contact-form">
+          <input type="hidden" name="access_key" value="057bb08a-1b77-4559-b094-77922a207709">
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="email">Business Email</label>
+              <input type="email" id="email" name="email" required>
+            </div>
+          </div>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label for="company">Company</label>
+              <input type="text" id="company" name="company" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="phone">Phone (Optional)</label>
+              <input type="tel" id="phone" name="phone">
+            </div>
+          </div>
+          
+          <div class="form-group form-group-full">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" required></textarea>
+          </div>
+          
+          <button type="submit" class="submit-btn">
+            <span>Send Message</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-brand">
+        <div class="footer-logo">NIVIAN</div>
+        <p>Custom, Safe, Private AI Solutions for Australian SMEs</p>
+      </div>
+      
+      <div class="footer-links">
+        <div class="footer-col">
+          <h4>Services</h4>
+          <a href="#services">Secure AI Assistants</a>
+          <a href="#services">Custom AI Agents</a>
+          <a href="#services">Copilot AI Agents</a>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <a href="#about">About</a>
+          <a href="#faq">FAQ</a>
+          <a href="#contact">Contact</a>
+        </div>
+        <div class="footer-col">
+          <h4>Connect</h4>
+          <a href="https://www.linkedin.com/company/nivianco" target="_blank">LinkedIn</a>
+          <a href="https://www.instagram.com/nivianco" target="_blank">Instagram</a>
+          <a href="mailto:contact@nivian.co">Email</a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; 2026 NIVIAN. All rights reserved. ABN 72 953 120 863.</p>
+    </div>
+  </footer>
+
   <!-- Modal Popups -->
   <div id="modalAiAssistantCore" class="modal">
     <div class="modal-content">
       <button class="modal-close">&times;</button>
-      <h3 class="modal-title">Core: AI Assistant - From $599/month + $999 Setup</h3>
+      <h3 class="modal-title">Core: AI Assistant</h3>
+      <div class="modal-pricing">from $599/month + $999 Setup</div>
       <div class="modal-details">
         <p>Perfect for small businesses who want a secure, custom AI assistant tailored to their needs without complex infrastructure.</p>
         
         <h4>What's Included:</h4>
         <ul>
           <li>Setup and configuration of a custom AI assistant hosted securely</li>
-          <li>Creation of up to three custom AI Agents without RAG capabilites to automate or assist with complex workflows and tasks</li>
           <li>Custom system prompts tailored to your business needs and workflows</li>
           <li>Model selection based on your requirements (GPT-4o, GPT-4o-mini, or other models)</li>
           <li>Privacy and compliance settings fully configured (no data used for training)</li>
           <li>Customizations including branding and recommended prompts</li>
+          <li>3 built-in custom AI Agents to automate complex tasks</li>
           <li>Email support with 48-hour response time</li>
         </ul>
         
@@ -170,14 +479,20 @@
           <li>Organizations wanting AI without document integration complexity</li>
         </ul>
       </div>
-      <button class="modal-cta">Contact Us to Get Started</button>
+      <button class="modal-cta">
+        <span>Contact Us to Get Started</span>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+      </button>
     </div>
   </div>
 
   <div id="modalAiAssistantPro" class="modal">
     <div class="modal-content">
       <button class="modal-close">&times;</button>
-      <h3 class="modal-title">Pro: AI Assistant - From $1599/month + $3999 Setup</h3>
+      <h3 class="modal-title">Pro: AI Assistant</h3>
+      <div class="modal-pricing">from $1599/month + $3999 Setup</div>
       <div class="modal-details">
         <p>Advanced AI assistant solution with full document and email integration, perfect for businesses requiring comprehensive data access and analysis capabilities.</p>
         
@@ -185,11 +500,11 @@
         <ul>
           <li>Everything in Core plan, plus:</li>
           <li>Full integration with SharePoint, OneDrive, and document libraries</li>
-          <li>Creation of up to three custom AI Agents to automate or assist with complex workflows and tasks</li>
           <li>Email search and analysis capabilities through Outlook integration</li>
           <li>Advanced document search (RAG) with semantic understanding</li>
           <li>Custom data source integration (databases etc.)</li>
           <li>Role-based access control ensuring proper permissions</li>
+          <li>3 built-in custom AI Agents to automate complex tasks</li>
           <li>Priority email support with 48-hour response time</li>
           <li>Monthly management, optimization, and monitoring included</li>
         </ul>
@@ -202,14 +517,20 @@
           <li>Businesses wanting comprehensive AI integration into daily operations</li>
         </ul>
       </div>
-      <button class="modal-cta">Contact Us to Get Started</button>
+      <button class="modal-cta">
+        <span>Contact Us to Get Started</span>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+      </button>
     </div>
   </div>
 
   <div id="modalCustomProject" class="modal">
     <div class="modal-content">
       <button class="modal-close">&times;</button>
-      <h3 class="modal-title">Copilot Agent - Custom Pricing</h3>
+      <h3 class="modal-title">Copilot Agent</h3>
+      <div class="modal-pricing">Custom Pricing</div>
       <div class="modal-details">
         <p>Tailored AI solutions designed specifically for your unique business challenges and workflows. Whether it's automation, data processing, or specialized AI applications, we build exactly what you need.</p>
         
@@ -235,162 +556,15 @@
           <li>Teams with specific workflows that need AI enhancement</li>
         </ul>
       </div>
-      <button class="modal-cta">Contact Us to Get Started</button>
+      <button class="modal-cta">
+        <span>Contact Us to Get Started</span>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+      </button>
     </div>
   </div>
-  <!-- FAQ Section -->
-  <section id="faq" class="faq">
-    <div class="section-header fade-in">
-      <h2 class="section-title">Frequently Asked Questions</h2>
-      <p class="section-subtitle">Everything you need to know about our AI solutions</p>
-    </div>
-    
-    <div class="faq-container">
-      <div class="faq-item fade-in">
-        <button class="faq-question">
-          <span>Why is data sovereignty important for Australian businesses?</span>
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer">
-          <p>Australian privacy laws, including the Privacy Act 1988, require businesses to protect personal information. Hosting your AI in Australia ensures compliance with these regulations, keeps your data within Australian legal jurisdiction, and protects against foreign access requests. For industries like healthcare and legal services, this is often mandatory.</p>
-        </div>
-      </div>
-      <div class="faq-item fade-in">
-        <button class="faq-question">
-          <span>What is the difference between Core and Pro?</span>
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer">
-          <p>The AI Assistant plans (Core and Pro) provide ready-to-deploy AI assistants customised to various degrees. Core allows you to have custom branding, system prompts, models, and full Australian data residency. Pro does the same except it has full integration with SharePoint, OneDrive, and document libraries as well as email search and custom data-source integration. We can also fine-tune pro assistants to improve at specific tasks your business needs.</p>
-        </div>
-      </div>
-      <div class="faq-item fade-in">
-        <button class="faq-question">
-          <span>What's the difference between the AI Assistant and Copilot Agent plans?</span>
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer">
-          <p>The AI Assistant plans (Core and Pro) provide ready-to-deploy AI assistants with varying levels of integration. Core is perfect for basic AI assistance, while Pro adds document and email search capabilities. Copilot Agents are built from scratch for your specific business problems, offering complete flexibility and tailored solutions for unique requirements.</p>
-        </div>
-      </div>
-      <div class="faq-item fade-in">
-        <button class="faq-question">
-          <span>How are assistants hosted?</span>
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer">
-          <p>Nivian Assistants are hosted in your Microsoft Tenancy. We force Australian residency for all resources and enforce this with Azure policy to ensure compliance and peace of mind. We can also host in other regions if this is required. Contact us for more info.</p>
-        </div>
-      </div>
-      <div class="faq-item fade-in">
-        <button class="faq-question">
-          <span>Can you integrate with our existing Microsoft 365 environment?</span>
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer">
-          <p>Absolutely. The Pro AI Assistant and Copilot Agents integrate seamlessly with Microsoft 365, including SharePoint, OneDrive, Outlook, and Teams. We configure secure access using your existing authentication systems and permissions, ensuring AI respects your current security policies and user access controls.</p>
-        </div>
-      </div>
-      <div class="faq-item fade-in">
-        <button class="faq-question">
-          <span>What can the AI Agents do?</span>
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer">
-          <p>The AI Agents can connect multiple data sources together as well as perform custom tasks. We can embed it within your current setup using API's exposed by your current tools.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- About Section -->
-  <section id="about" class="about">
-    <div class="section-header fade-in">
-      <h2 class="section-title">About Nivian</h2>
-      <p class="section-subtitle">Nivian helps Australian businesses adopt AI safely, privately, and with complete confidence.</p>
-    </div>
-    
-    <div class="about-grid">
-      <div class="about-box fade-in">
-        <h3>Our Mission</h3>
-        <p>Our mission is to make AI accessible and compliant for all. There are very real security risks with inputting sensitive data to public AI systems. We empower firms to use AI without sacrificing privacy, security, or regulatory requirements.</p>
-      </div>
-      
-      <div class="about-box fade-in">
-        <h3>Our Approach</h3>
-        <p>Practical, simple solutions, built around your workflows. We integrate AI directly into your tools and documents so it actually improves daily operations, not complicates them. No over-engineering or complex interfaces.</p>
-      </div>
-      
-      <div class="about-box fade-in">
-        <h3>Our Values</h3>
-        <p>Clarity. Security. Humility. Every system we build should be simple and able to be understood by anyone while also maintaining the highest privacy standards. We also keep things grounded and honest, no ego, no jargon.</p>
-      </div>
-    </div>
-  </section>
-  <!-- Contact Section -->
-  <section id="contact" class="contact">
-    <div class="section-header fade-in">
-      <h2 class="section-title">Get In Touch</h2>
-      <p class="section-subtitle">Ready to transform your business with AI? Let's start the conversation</p>
-    </div>
-    
-    <div class="contact-container fade-in">
-      <div class="contact-info" style="text-align: center; margin-bottom: 2rem;">
-        <p style="font-size: 1.2rem; color: var(--soft-blue);">
-          Reach us at: <a href="mailto:contact@nivian.co" style="color: var(--electric-blue); text-decoration: none;">contact@nivian.co</a>
-        </p>
-      </div>
-      
-      <form action="https://api.web3forms.com/submit" method="POST" class="contact-form">
-        <input type="hidden" name="access_key" value="057bb08a-1b77-4559-b094-77922a207709">
-        
-        <div class="form-grid">
-          <div class="form-group">
-            <label for="name">Name</label>
-            <input type="text" id="name" name="name" required>
-          </div>
-          
-          <div class="form-group">
-            <label for="email">Business Email</label>
-            <input type="email" id="email" name="email" required>
-          </div>
-          
-          <div class="form-group">
-            <label for="company">Company</label>
-            <input type="text" id="company" name="company" required>
-          </div>
-          
-          <div class="form-group">
-            <label for="phone">Phone (Optional)</label>
-            <input type="tel" id="phone" name="phone">
-          </div>
-          
-          <div class="form-group full-width">
-            <label for="message">Message</label>
-            <textarea id="message" name="message" required></textarea>
-          </div>
-        </div>
-        
-        <button type="submit" class="submit-btn">Send Message</button>
-      </form>
-    </div>
-  </section>
-  <!-- Footer -->
-  <footer>
-    <div class="social-links">
-      <a href="https://www.linkedin.com/company/nivianco" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-        </svg>
-      </a>
-      <a href="https://www.instagram.com/nivianco/?utm_source=ig_web_button_share_sheet" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-        </svg>
-      </a>
-    </div>
-    <p>&copy; 2026 NIVIAN. All rights reserved. 72 953 120 863.</p>
-  </footer>
+
   <script src="script.js"></script>
 </body>
 </html>
-
