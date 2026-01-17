@@ -410,7 +410,7 @@ nav.nav-visible {
   background: linear-gradient(90deg, transparent, var(--electric-blue), transparent);
   position: relative;
   margin: 0;
-  animation: pulse-glow 3s ease-in-out infinite;
+  animation: pulse-glow 5s ease-in-out infinite;
   box-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
 }
 
@@ -423,7 +423,7 @@ nav.nav-visible {
   height: 4px;
   background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.4), transparent);
   filter: blur(8px);
-  animation: pulse-glow 3s ease-in-out infinite;
+  animation: pulse-glow 5s ease-in-out infinite;
 }
 
 @keyframes pulse-glow {
@@ -1503,13 +1503,60 @@ footer {
     right: 0;
   }
   
-  .section-title-large {
-    font-size: clamp(2.5rem, 10vw, 4rem);
+  /* Hero Section Mobile Fixes */
+  .hero {
+    padding: 0 5%;
+    min-height: 100vh;
+    justify-content: center;
   }
   
+  .hero-title {
+    font-size: clamp(4rem, 18vw, 7rem) !important;
+    margin-bottom: 1.5rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+  }
+  
+  .hero-label {
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    margin-bottom: 1.5rem;
+  }
+  
+  .hero-cta {
+    padding: 1.2rem 2rem;
+    font-size: 1rem;
+  }
+  
+  /* Hero Stats Mobile - Smaller and Compact */
   .hero-stats {
-    flex-direction: column;
+    position: static;
+    margin-top: 3rem;
+    flex-direction: row;
+    justify-content: center;
     gap: 2rem;
+    flex-wrap: wrap;
+  }
+  
+  .hero-stat {
+    flex: 0 1 auto;
+  }
+  
+  .stat-number {
+    font-size: 1.5rem !important;
+    margin-bottom: 0.3rem;
+  }
+  
+  .stat-label {
+    font-size: 0.7rem !important;
+    letter-spacing: 0.5px;
+  }
+  
+  .section-title-large {
+    font-size: clamp(2.5rem, 10vw, 4rem);
   }
   
   .about-slide-content {
@@ -1539,20 +1586,86 @@ footer {
 }
 
 @media (max-width: 480px) {
+  /* Hero improvements for small phones */
   .hero-title {
-    font-size: clamp(3rem, 12vw, 5rem);
+    font-size: clamp(3.5rem, 16vw, 6rem) !important;
+    letter-spacing: -0.03em;
+  }
+  
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+  
+  .hero-cta {
+    padding: 1rem 1.8rem;
+    font-size: 0.95rem;
+  }
+  
+  .hero-stats {
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+  }
+  
+  .stat-number {
+    font-size: 1.3rem !important;
+  }
+  
+  .stat-label {
+    font-size: 0.65rem !important;
   }
   
   .service-block {
     padding: 2rem;
   }
   
+  .service-number {
+    font-size: 3.5rem;
+  }
+  
+  .section-number {
+    font-size: 0.9rem;
+  }
+  
+  .section-title-large {
+    font-size: clamp(2rem, 12vw, 3.5rem);
+  }
+  
+  .section-subtitle-large {
+    font-size: 1.1rem;
+  }
+  
   .pricing-card {
     padding: 2rem;
   }
   
+  .pricing-tier {
+    font-size: 2rem;
+  }
+  
+  .pricing-price {
+    font-size: 2.5rem;
+  }
+  
   .contact-form {
     padding: 2rem;
+  }
+  
+  .about-slide-content {
+    padding: 2rem 1.5rem;
+  }
+  
+  .about-slide-number {
+    font-size: 5rem;
+    top: 1rem;
+    right: 1.5rem;
+  }
+  
+  .about-slide h3 {
+    font-size: 1.8rem;
+  }
+  
+  .about-slide p {
+    font-size: 1rem;
   }
 }
 
