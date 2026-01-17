@@ -1,4 +1,30 @@
-// Smooth scrolling for navigation links
+// ============================================
+// NAVIGATION VISIBILITY ON SCROLL
+// ============================================
+const mainNav = document.getElementById('mainNav');
+const scrollIndicator = document.getElementById('scrollIndicator');
+let lastScroll = 0;
+
+window.addEventListener('scroll', () => {
+  const currentScroll = window.pageYOffset;
+  
+  // Show nav after scrolling down 200px
+  if (currentScroll > 200) {
+    mainNav.classList.add('nav-visible');
+    mainNav.classList.remove('nav-hidden');
+    scrollIndicator.classList.add('hidden');
+  } else {
+    mainNav.classList.remove('nav-visible');
+    mainNav.classList.add('nav-hidden');
+    scrollIndicator.classList.remove('hidden');
+  }
+  
+  lastScroll = currentScroll;
+});
+
+// ============================================
+// SMOOTH SCROLLING FOR NAVIGATION LINKS
+// ============================================
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function (e) {
     e.preventDefault();
@@ -15,7 +41,9 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   });
 });
 
-// Mobile menu toggle
+// ============================================
+// MOBILE MENU TOGGLE
+// ============================================
 const menuToggle = document.getElementById('menuToggle');
 const navMenu = document.getElementById('navMenu');
 
@@ -24,10 +52,12 @@ menuToggle.addEventListener('click', () => {
   navMenu.classList.toggle('active');
 });
 
-// Intersection Observer for fade-in animations
+// ============================================
+// INTERSECTION OBSERVER FOR SCROLL ANIMATIONS
+// ============================================
 const observerOptions = {
-  threshold: 0.1,
-  rootMargin: '0px 0px -50px 0px'
+  threshold: 0.15,
+  rootMargin: '0px 0px -100px 0px'
 };
 
 const observer = new IntersectionObserver((entries) => {
@@ -38,154 +68,105 @@ const observer = new IntersectionObserver((entries) => {
   });
 }, observerOptions);
 
-document.querySelectorAll('.fade-in').forEach(element => {
+// Observe all elements with scroll reveal classes
+document.querySelectorAll('.service-block, .pricing-card, .faq-item, .demo-text, .demo-video-container, .contact-text, .contact-form-container').forEach(element => {
   observer.observe(element);
 });
 
-// Active nav link on scroll
-window.addEventListener('scroll', () => {
-  const sections = document.querySelectorAll('section[id]');
-  const scrollPosition = window.scrollY + 100;
+// ============================================
+// ABOUT SECTION - HORIZONTAL AUTO-SCROLL CAROUSEL
+// ============================================
+const carousel = document.getElementById('aboutCarousel');
+const dots = document.querySelectorAll('.dot');
+let currentSlide = 0;
+let autoScrollInterval;
+const SCROLL_INTERVAL = 5000; // 5 seconds
 
-  sections.forEach(section => {
-    const sectionTop = section.offsetTop;
-    const sectionHeight = section.offsetHeight;
-    const sectionId = section.getAttribute('id');
-    
-    if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-      document.querySelectorAll('.nav-menu a').forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href') === `#${sectionId}`) {
-          link.classList.add('active');
-        }
-      });
+// Function to scroll to a specific slide
+function scrollToSlide(index) {
+  const slideWidth = carousel.offsetWidth;
+  carousel.scrollTo({
+    left: slideWidth * index,
+    behavior: 'smooth'
+  });
+  currentSlide = index;
+  updateDots();
+}
+
+// Update active dot indicator
+function updateDots() {
+  dots.forEach((dot, index) => {
+    if (index === currentSlide) {
+      dot.classList.add('active');
+    } else {
+      dot.classList.remove('active');
     }
   });
-});
+}
 
-// Pricing card hover effects (works on both desktop and mobile touch)
-document.querySelectorAll('.pricing-card').forEach(card => {
-  // Desktop hover
-  card.addEventListener('mouseenter', function() {
-    this.classList.add('hover-active');
-  });
-  
-  card.addEventListener('mouseleave', function() {
-    this.classList.remove('hover-active');
-  });
+// Auto-scroll function
+function startAutoScroll() {
+  autoScrollInterval = setInterval(() => {
+    currentSlide = (currentSlide + 1) % 3; // Loop back to 0 after slide 2
+    scrollToSlide(currentSlide);
+  }, SCROLL_INTERVAL);
+}
 
-  // Mobile touch
-  card.addEventListener('touchstart', function() {
-    this.classList.add('hover-active');
-  });
-  
-  card.addEventListener('touchend', function() {
-    setTimeout(() => {
-      this.classList.remove('hover-active');
-    }, 300);
-  });
-});
+// Stop auto-scroll
+function stopAutoScroll() {
+  clearInterval(autoScrollInterval);
+}
 
-// Service card animations (works on both desktop and mobile)
-document.querySelectorAll('.service-card').forEach(card => {
-  // Desktop hover
-  card.addEventListener('mouseenter', function() {
-    this.classList.add('hover-active');
-  });
-  
-  card.addEventListener('mouseleave', function() {
-    this.classList.remove('hover-active');
-  });
-
-  // Mobile touch
-  card.addEventListener('touchstart', function() {
-    this.classList.add('hover-active');
-  });
-  
-  card.addEventListener('touchend', function() {
-    setTimeout(() => {
-      this.classList.remove('hover-active');
-    }, 300);
+// Dot click handlers
+dots.forEach((dot, index) => {
+  dot.addEventListener('click', () => {
+    stopAutoScroll();
+    scrollToSlide(index);
+    startAutoScroll(); // Restart auto-scroll after manual interaction
   });
 });
 
-// Ripple effect on hero CTA button
-const heroCta = document.getElementById('heroCta');
-heroCta.addEventListener('click', function(e) {
-  const ripple = document.createElement('span');
-  ripple.classList.add('ripple');
+// Manual scroll detection
+let isScrolling;
+carousel.addEventListener('scroll', () => {
+  // Clear auto-scroll while user is manually scrolling
+  stopAutoScroll();
   
-  const rect = this.getBoundingClientRect();
-  const size = Math.max(rect.width, rect.height);
-  const x = e.clientX - rect.left - size / 2;
-  const y = e.clientY - rect.top - size / 2;
-  
-  ripple.style.width = ripple.style.height = size + 'px';
-  ripple.style.left = x + 'px';
-  ripple.style.top = y + 'px';
-  
-  this.appendChild(ripple);
-  
-  setTimeout(() => {
-    ripple.remove();
-  }, 600);
+  // Detect which slide we're on
+  clearTimeout(isScrolling);
+  isScrolling = setTimeout(() => {
+    const slideWidth = carousel.offsetWidth;
+    const scrollLeft = carousel.scrollLeft;
+    currentSlide = Math.round(scrollLeft / slideWidth);
+    updateDots();
+    startAutoScroll(); // Restart auto-scroll after manual scroll ends
+  }, 150);
 });
 
-// Modal functionality
-const modalAiAssistantCore = document.getElementById('modalAiAssistantCore');
-const modalAiAssistantPro = document.getElementById('modalAiAssistantPro');
-const modalCustomProject = document.getElementById('modalCustomProject');
+// Start auto-scroll when page loads
+startAutoScroll();
 
-// Open modals when pricing buttons are clicked
-document.querySelectorAll('.pricing-btn').forEach(btn => {
-  btn.addEventListener('click', function() {
-    const card = this.closest('.pricing-card');
-    const plan = card.getAttribute('data-plan');
-    
-    if (plan === 'ai-assistant-core') {
-      modalAiAssistantCore.classList.add('active');
-    } else if (plan === 'ai-assistant-pro') {
-      modalAiAssistantPro.classList.add('active');
-    } else if (plan === 'custom-project') {
-      modalCustomProject.classList.add('active');
+// Pause auto-scroll when user hovers over carousel (desktop)
+carousel.addEventListener('mouseenter', stopAutoScroll);
+carousel.addEventListener('mouseleave', startAutoScroll);
+
+// Stop auto-scroll when About section is not in view
+const aboutSection = document.getElementById('about');
+const aboutObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      startAutoScroll();
+    } else {
+      stopAutoScroll();
     }
   });
-});
+}, { threshold: 0.3 });
 
-// Close modals
-document.querySelectorAll('.modal-close').forEach(closeBtn => {
-  closeBtn.addEventListener('click', function() {
-    this.closest('.modal').classList.remove('active');
-  });
-});
+aboutObserver.observe(aboutSection);
 
-// Close modal when clicking outside
-document.querySelectorAll('.modal').forEach(modal => {
-  modal.addEventListener('click', function(e) {
-    if (e.target === this) {
-      this.classList.remove('active');
-    }
-  });
-});
-
-// Modal CTA buttons scroll to contact
-document.querySelectorAll('.modal-cta').forEach(btn => {
-  btn.addEventListener('click', function() {
-    // Close modal
-    this.closest('.modal').classList.remove('active');
-    
-    // Scroll to contact section
-    const contactSection = document.getElementById('contact');
-    if (contactSection) {
-      contactSection.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
-      });
-    }
-  });
-});
-
-// FAQ Accordion functionality
+// ============================================
+// FAQ ACCORDION
+// ============================================
 document.querySelectorAll('.faq-question').forEach(button => {
   button.addEventListener('click', function() {
     const faqItem = this.parentElement;
@@ -203,7 +184,134 @@ document.querySelectorAll('.faq-question').forEach(button => {
   });
 });
 
-// Add parallax effect to hero section
+// ============================================
+// MODAL FUNCTIONALITY
+// ============================================
+const modalAiAssistantCore = document.getElementById('modalAiAssistantCore');
+const modalAiAssistantPro = document.getElementById('modalAiAssistantPro');
+const modalCustomProject = document.getElementById('modalCustomProject');
+
+// Open modals when pricing buttons are clicked
+document.querySelectorAll('.pricing-btn').forEach(btn => {
+  btn.addEventListener('click', function() {
+    const card = this.closest('.pricing-card');
+    const plan = card.getAttribute('data-plan');
+    
+    if (plan === 'ai-assistant-core') {
+      modalAiAssistantCore.classList.add('active');
+    } else if (plan === 'ai-assistant-pro') {
+      modalAiAssistantPro.classList.add('active');
+    } else if (plan === 'custom-project') {
+      modalCustomProject.classList.add('active');
+    }
+    
+    // Stop body scrolling when modal is open
+    document.body.style.overflow = 'hidden';
+  });
+});
+
+// Close modals
+document.querySelectorAll('.modal-close').forEach(closeBtn => {
+  closeBtn.addEventListener('click', function() {
+    this.closest('.modal').classList.remove('active');
+    document.body.style.overflow = 'auto';
+  });
+});
+
+// Close modal when clicking outside
+document.querySelectorAll('.modal').forEach(modal => {
+  modal.addEventListener('click', function(e) {
+    if (e.target === this) {
+      this.classList.remove('active');
+      document.body.style.overflow = 'auto';
+    }
+  });
+});
+
+// Modal CTA buttons scroll to contact
+document.querySelectorAll('.modal-cta').forEach(btn => {
+  btn.addEventListener('click', function() {
+    // Close modal
+    this.closest('.modal').classList.remove('active');
+    document.body.style.overflow = 'auto';
+    
+    // Scroll to contact section
+    const contactSection = document.getElementById('contact');
+    if (contactSection) {
+      contactSection.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  });
+});
+
+// Close modal with Escape key
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    document.querySelectorAll('.modal.active').forEach(modal => {
+      modal.classList.remove('active');
+      document.body.style.overflow = 'auto';
+    });
+  }
+});
+
+// ============================================
+// ACTIVE NAV LINK ON SCROLL
+// ============================================
+window.addEventListener('scroll', () => {
+  const sections = document.querySelectorAll('section[id]');
+  const scrollPosition = window.scrollY + 150;
+
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop;
+    const sectionHeight = section.offsetHeight;
+    const sectionId = section.getAttribute('id');
+    
+    if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+      document.querySelectorAll('.nav-menu a').forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${sectionId}`) {
+          link.classList.add('active');
+        }
+      });
+    }
+  });
+});
+
+// ============================================
+// PERFORMANCE OPTIMIZATIONS
+// ============================================
+
+// Debounce function for scroll events
+function debounce(func, wait) {
+  let timeout;
+  return function executedFunction(...args) {
+    const later = () => {
+      clearTimeout(timeout);
+      func(...args);
+    };
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+  };
+}
+
+// Lazy load images if any
+if ('loading' in HTMLImageElement.prototype) {
+  const images = document.querySelectorAll('img[loading="lazy"]');
+  images.forEach(img => {
+    img.src = img.dataset.src;
+  });
+} else {
+  // Fallback for browsers that don't support lazy loading
+  const script = document.createElement('script');
+  script.src = 'https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.2/lazysizes.min.js';
+  document.body.appendChild(script);
+}
+
+// ============================================
+// PARALLAX EFFECT ON HERO (SUBTLE)
+// ============================================
 let ticking = false;
 window.addEventListener('scroll', () => {
   if (!ticking) {
@@ -211,8 +319,11 @@ window.addEventListener('scroll', () => {
       const scrolled = window.pageYOffset;
       const hero = document.querySelector('.hero');
       if (hero && scrolled < window.innerHeight) {
-        hero.style.transform = `translateY(${scrolled * 0.15}px)`;
-        hero.style.opacity = Math.max(0.3, 1 - (scrolled / (window.innerHeight * 1.5)));
+        const heroContent = hero.querySelector('.hero-content');
+        if (heroContent) {
+          heroContent.style.transform = `translateY(${scrolled * 0.1}px)`;
+          heroContent.style.opacity = Math.max(0, 1 - (scrolled / (window.innerHeight * 0.8)));
+        }
       }
       ticking = false;
     });
@@ -220,40 +331,36 @@ window.addEventListener('scroll', () => {
   }
 });
 
-// Navbar background on scroll
-window.addEventListener('scroll', () => {
-  const nav = document.querySelector('nav');
-  if (window.scrollY > 50) {
-    nav.style.background = 'rgba(12, 26, 59, 0.95)';
-    nav.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.3)';
-  } else {
-    nav.style.background = 'rgba(12, 26, 59, 0.85)';
-    nav.style.boxShadow = 'none';
-  }
-});
-
-// Hero title gradient follows mouse
-const heroTitle = document.querySelector('.hero h1');
-if (heroTitle) {
-  heroTitle.addEventListener('mousemove', function(e) {
-    const rect = this.getBoundingClientRect();
-    const x = ((e.clientX - rect.left) / rect.width) * 100;
-    const y = ((e.clientY - rect.top) / rect.height) * 100;
-    
-    this.style.background = `
-      radial-gradient(circle at ${x}% ${y}%, 
-        white, 
-        var(--electric-blue) 30%, 
-        var(--bright-blue) 60%
-      )
-    `;
-    this.style.webkitBackgroundClip = 'text';
-    this.style.backgroundClip = 'text';
-  });
-  
-  heroTitle.addEventListener('mouseleave', function() {
-    this.style.background = 'linear-gradient(135deg, white, var(--electric-blue), var(--bright-blue))';
-    this.style.webkitBackgroundClip = 'text';
-    this.style.backgroundClip = 'text';
+// ============================================
+// FORM VALIDATION FEEDBACK
+// ============================================
+const contactForm = document.querySelector('.contact-form');
+if (contactForm) {
+  contactForm.addEventListener('submit', function(e) {
+    // Form will submit to Web3Forms, but we can add visual feedback
+    const submitBtn = this.querySelector('.submit-btn');
+    submitBtn.innerHTML = '<span>Sending...</span>';
+    submitBtn.style.opacity = '0.7';
+    submitBtn.disabled = true;
   });
 }
+
+// ============================================
+// REDUCE MOTION FOR ACCESSIBILITY
+// ============================================
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+if (prefersReducedMotion.matches) {
+  // Disable auto-scroll carousel for users who prefer reduced motion
+  stopAutoScroll();
+  
+  // Reduce animation durations
+  document.documentElement.style.setProperty('--animation-duration', '0.01ms');
+}
+
+// ============================================
+// CONSOLE EASTER EGG
+// ============================================
+console.log('%c🚀 NIVIAN AI Solutions', 'color: #00d4ff; font-size: 24px; font-weight: bold;');
+console.log('%cBuilt with care in Australia 🇦🇺', 'color: #5b9bd5; font-size: 14px;');
+console.log('%cInterested in working with us? contact@nivian.co', 'color: #a8c5e6; font-size: 12px;');
